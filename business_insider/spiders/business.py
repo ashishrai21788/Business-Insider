@@ -8,7 +8,7 @@ class BusinessSpider(scrapy.Spider):
     start_urls = ['http://www.businessinsider.in/']
 
     def parse(self, response):
-        for business_url in response.css("div.navstry-content > h3 > a ::attr(href)").extract():
+        for business_url in response.css("div.clearfix > h3 > a ::attr(href)").extract():
             yield scrapy.Request(response.urljoin(business_url), callback=self.parse_detail_page)
     
     def parse_detail_page(self, response):
