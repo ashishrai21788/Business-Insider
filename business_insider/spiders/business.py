@@ -14,7 +14,7 @@ class BusinessSpider(scrapy.Spider):
     def parse_detail_page(self, response):
         headline = response.css("div.mobile_padding").extract_first()
         author = response.css("span.foreign_author").extract_first()
-        item = BusinessInsiderItem()
+        item = {}
         item['headline'] = headline
         item['author'] = author
         item['url'] = response.url
