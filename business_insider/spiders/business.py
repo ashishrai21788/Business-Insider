@@ -15,17 +15,9 @@ class BusinessSpider(scrapy.Spider):
         headlineDiv = response.css("div.mobile_padding")
         headline = headlineDiv.css("h1 ::text").extract_first()
         author = response.css("span.foreign_author").extract_first()
-        if str(author).find("</i>"):
-            try:
-                author = str(author)
-                author_list = author.split("</i>")
-                if len(author_list)>1:
-                    author = author_list[1]
-                    if str(author).find("</span>"):
-                        author = author.replace('</span>','')
-    
+        
         item = {}
         item['headline'] = headline
-        item['author'] = author
+        item['author'] = str(author)
         item['url'] = response.url
         yield item
