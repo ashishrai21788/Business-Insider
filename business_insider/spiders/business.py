@@ -23,6 +23,8 @@ class BusinessSpider(scrapy.Spider):
                     author = str(author_list[1])
                     if str(author).find("</span>"):
                         author = author.replace('</span>','')
+            except:
+                print("Error in data parsing")
         item = {}
         item['headline'] = headline
         item['author'] = str(author)
