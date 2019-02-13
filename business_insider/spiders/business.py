@@ -22,7 +22,7 @@ class BusinessSpider(scrapy.Spider):
                 if len(author_list)>1:
                     author = author_list[1]
                     if str(author).find("</span>"):
-                        author = author.replace('.com','</span>')
+                        author = author.replace('</span>','')
     
         item = {}
         item['headline'] = headline
