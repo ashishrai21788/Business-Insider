@@ -12,8 +12,8 @@ class BusinessSpider(scrapy.Spider):
             yield scrapy.Request(response.urljoin(business_url), callback=self.parse_detail_page)
     
     def parse_detail_page(self, response):
-        headline = response.css("div.mobile_padding::text").extract()[0]
-        author = response.css("span.foreign_author::text").extract()[0]
+        headline = response.css("div.mobile_padding::text()")
+        author = response.css("span.foreign_author::text()")
         item = {}
         item['headline'] = headline
         item['author'] = author
